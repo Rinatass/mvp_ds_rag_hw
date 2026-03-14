@@ -77,7 +77,6 @@ def load_index(index_dir: str = "rag_index"):
 
 
 def retrieve(query: str, index: faiss.Index, chunks: list[dict], top_k: int = 5) -> list[dict]:
-    """Возвращает top-k чанков с score."""
     qvec = embed_query(query).astype(np.float32).reshape(1, -1)
     scores, indices = index.search(qvec, top_k)
 
